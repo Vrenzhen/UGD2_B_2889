@@ -26,14 +26,36 @@
         </div>
         <div class="right-content">
             <h3>SEND MESSAGE</h3>
-            <form class="contact-form">
+            
+            <form class="contact-form" id="contactForm" onsubmit="kirimPesan(event)">
                 <input type="text" placeholder="Enter your name*" required>
                 <input type="email" placeholder="Enter your email*" required>
                 <input type="text" placeholder="Phone number">
                 <textarea placeholder="Your message*" rows="4" required></textarea>
-                <button type="button" class="btn-submit">SUBMIT</button>
+                <button type="submit" class="btn-submit">SUBMIT</button>
             </form>
+
+            <div id="pesanSukses" style="display: none; background: rgba(16, 185, 129, 0.2); padding: 20px; border-radius: 10px; border: 1px solid #10b981; text-align: center; width: 80%;">
+                <h4 style="color: #10b981; margin-bottom: 10px;">✅ Pesan Berhasil Terkirim!</h4>
+                <p style="font-size: 14px;">Terima kasih telah menghubungi saya. Saya akan segera membalas email Anda.</p>
+                <button onclick="resetForm()" class="btn-submit" style="padding: 10px 20px; font-size: 12px;">Kirim Pesan Lain</button>
+            </div>
+
         </div>
     </section>
+
+    <script>
+        function kirimPesan(event) {
+            event.preventDefault(); 
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('pesanSukses').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('contactForm').reset();
+            document.getElementById('contactForm').style.display = 'flex';
+            document.getElementById('pesanSukses').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
